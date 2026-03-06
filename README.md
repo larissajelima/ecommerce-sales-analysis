@@ -25,29 +25,31 @@ Este projeto busca responder às seguintes perguntas:
 
 ---
 
-## 🗂 Estrutura do Projeto
+## Estrutura do Projeto
+
 ecommerce-sales-analysis
 │
 ├── README.md
+│
 ├── schema
-│ └── create_tables.sql
+│   └── create_tables.sql
 │
 ├── queries
-│ ├── faturamento_diario.sql
-│ ├── faturamento_acumulado.sql
-│ ├── top_clientes.sql
-│ ├── clientes_sem_compra.sql
-│ ├── taxa_recompra.sql
-│ └── analise_por_cidade.sql
+│   ├── faturamento_diario.sql
+│   ├── faturamento_acumulado.sql
+│   ├── top_clientes.sql
+│   ├── clientes_sem_compra.sql
+│   ├── taxa_recompra.sql
+│   └── analise_por_cidade.sql
 │
 ├── dataset
-│ └── sample_data.csv
+│   ├── clientes.csv
+│   └── pedidos.csv
 │
 └── insights
-└── conclusions.md
+    └── conclusions.md
 
 
----
 ## Dataset
 
 O projeto utiliza dois conjuntos de dados:
