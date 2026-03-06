@@ -27,6 +27,7 @@ Este projeto busca responder às seguintes perguntas:
 
 ## Estrutura do Projeto
 
+```
 ecommerce-sales-analysis
 │
 ├── README.md
@@ -48,6 +49,7 @@ ecommerce-sales-analysis
 │
 └── insights
     └── conclusions.md
+```
 
 
 ## Dataset
