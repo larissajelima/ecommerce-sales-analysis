@@ -1,20 +1,28 @@
-WITH cidades AS (
-SELECT 
-c.cidade,
-COUNT(DISTINCT c.cliente_id) AS total_clientes,
-COALESCE(SUM(p.valor_total),0) AS faturamento_total,
-COALESCE(AVG(p.valor_total),0) AS ticket_medio_cidade
-FROM clientes c
-LEFT JOIN pedidos p
-ON c.cliente_id = p.cliente_id
-GROUP BY c.cidade
-)
+-- Objetivo: analisar o desempenho de vendas por cidade
+-- Métricas: faturamento total, quantidade de pedidos, ticket médio e participação no faturamento geral
 
+WITH faturamento_cidade AS (
+    SELECT
+        c.cidade,
+        COUNT(p.pedido_id) AS quantidade_pedidos,
+        SUM(p.valor_total) AS faturamento_total,
+        ROUND(AVG(p.valor_total), 2) AS ticket_medio
+    FROM clientes c
+    JOIN pedidos p
+        ON c.cliente_id = p.cliente_id
+    GROUP BY c.cidade
+),
+total_geral AS (
+    SELECT
+        SUM(valor_total) AS faturamento_geral
+    FROM pedidos
+)
 SELECT
-cidade,
-total_clientes,
-faturamento_total,
-ticket_medio_cidade,
-ROUND(faturamento_total * 100.0 / SUM(faturamento_total) OVER (),2) AS participacao_pct,
-RANK() OVER (ORDER BY faturamento_total DESC) AS ranking_faturamento
-FROM cidades;
+    fc.cidade,
+    fc.quantidade_pedidos,
+    ROUND(fc.faturamento_total, 2) AS faturamento_total,
+    fc.ticket_medio,
+    ROUND((fc.faturamento_total * 100.0 / tg.faturamento_geral), 2) AS participacao_percentual
+FROM faturamento_cidade fc
+CROSS JOIN total_geral tg
+ORDER BY fc.faturamento_total DESC;
