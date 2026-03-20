@@ -5,6 +5,7 @@ WITH faturamento_cidade AS (
     SELECT
         c.cidade,
         COUNT(p.pedido_id) AS quantidade_pedidos,
+        COUNT(DISTINCT c.cliente_id) AS quantidade_clientes,
         SUM(p.valor_total) AS faturamento_total,
         ROUND(AVG(p.valor_total), 2) AS ticket_medio
     FROM clientes c
@@ -19,6 +20,7 @@ total_geral AS (
 )
 SELECT
     fc.cidade,
+    fc.quantidade_clientes,
     fc.quantidade_pedidos,
     ROUND(fc.faturamento_total, 2) AS faturamento_total,
     fc.ticket_medio,
