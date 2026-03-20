@@ -1,18 +1,22 @@
 # Análise de Vendas de E-commerce com SQL
 
-## 📊 Visão Geral do Projeto
+Projeto de análise de dados de um e-commerce com foco em faturamento, comportamento de clientes e desempenho geográfico.
 
-Este projeto realiza uma análise exploratória de dados de vendas de um e-commerce utilizando SQL.
-
-O objetivo é extrair insights sobre faturamento, comportamento de clientes e distribuição geográfica das vendas, respondendo a perguntas de negócio comuns em empresas de comércio eletrônico.
-
-O projeto utiliza consultas SQL para calcular métricas importantes como faturamento diário, ticket médio, taxa de recompra e desempenho de vendas por cidade.
+Utilizando SQL, o projeto transforma dados brutos em métricas e insights que apoiam a tomada de decisão em contextos de negócio.
 
 ---
 
-## 🎯 Perguntas de Negócio
+## 🧠 O que este projeto demonstra
 
-Este projeto busca responder às seguintes perguntas:
+- Capacidade de traduzir perguntas de negócio em consultas SQL
+- Uso de joins, agregações, CTEs e window functions
+- Organização de um projeto analítico completo
+- Análise de métricas de negócio (faturamento, ticket médio, recompra)
+- Estruturação de dados para tomada de decisão
+
+---
+
+## 🎯 Perguntas de negócio analisadas
 
 - Qual é o faturamento diário da empresa?
 - Como evolui o faturamento acumulado ao longo do tempo?
@@ -25,60 +29,69 @@ Este projeto busca responder às seguintes perguntas:
 
 ---
 
-## Estrutura do Projeto
+## 📂 Dataset
 
+O projeto utiliza dois arquivos:
+
+- `clientes.csv`: dados cadastrais dos clientes
+- `pedidos.csv`: registros de compras realizadas
+
+### Principais campos
+
+**clientes.csv**
+- cliente_id
+- nome
+- cidade
+- data_cadastro
+
+**pedidos.csv**
+- pedido_id
+- cliente_id
+- data_pedido
+- valor_total
+
+---
+
+## 📁 Estrutura do projeto
 ```
 ecommerce-sales-analysis
 │
 ├── README.md
 │
 ├── schema
-│   └── create_tables.sql
+│ └── create_tables.sql
 │
 ├── queries
-│   ├── faturamento_diario.sql
-│   ├── faturamento_acumulado.sql
-│   ├── top_clientes.sql
-│   ├── clientes_sem_compra.sql
-│   ├── taxa_recompra.sql
-│   └── analise_por_cidade.sql
+│ ├── faturamento_diario.sql
+│ ├── faturamento_acumulado.sql
+│ ├── top_clientes.sql
+│ ├── clientes_sem_compra.sql
+│ ├── taxa_recompra.sql
+│ ├── analise_por_cidade.sql
+│ └── ticket_medio.sql
 │
 ├── dataset
-│   ├── clientes.csv
-│   └── pedidos.csv
+│ ├── clientes.csv
+│ └── pedidos.csv
 │
 └── insights
-    └── conclusions.md
+└── conclusions.md
 ```
 
 
-## Dataset
+---
 
-O projeto utiliza dois conjuntos de dados:
-
-clientes.csv
-- cliente_id
-- nome
-- cidade
-- data_cadastro
-
-pedidos.csv
-- pedido_id
-- cliente_id
-- data_pedido
-- valor_total
-
-## 🧰 Tecnologias Utilizadas
+## 🧰 Tecnologias utilizadas
 
 - SQL
 - Banco de dados relacional
-- Window Functions
 - CTE (Common Table Expressions)
+- Window Functions
 - Funções de agregação
 
 ---
 
-## 📈 Principais Análises Realizadas
+## 📈 Principais análises realizadas
 
 ### Faturamento diário
 Calcula o total de vendas realizadas por dia.
@@ -103,29 +116,68 @@ Avalia quais cidades geram mais faturamento e sua participação no total.
 
 ---
 
-## 💡 Exemplos de Insights
+## 💡 Principais insights
 
-Alguns insights que podem ser obtidos com a análise:
-
-- Determinar quais regiões possuem maior volume de vendas
-- Identificar clientes com maior valor para o negócio
-- Avaliar o nível de fidelização dos clientes
-- Entender padrões de crescimento de faturamento
+- O faturamento está concentrado em determinadas cidades, indicando dependência geográfica
+- Uma parcela relevante dos clientes cadastrados não realizou compras
+- Clientes recorrentes possuem impacto significativo na receita total
+- A evolução do faturamento apresenta padrão consistente ao longo do tempo
 
 ---
 
-## 🚀 Possíveis Evoluções do Projeto
+## ⚙️ Como reproduzir o projeto
 
-Este projeto pode ser expandido com:
-
-- Criação de dashboards em Power BI ou Tableau
-- Análises adicionais em Python (pandas)
-- Modelagem de dados para Data Warehouse
-- Análise de churn de clientes
-- Análise de funil de vendas
+1. Executar o script `schema/create_tables.sql` para criação das tabelas  
+2. Importar os arquivos CSV da pasta `dataset`  
+3. Executar as consultas SQL disponíveis na pasta `queries`  
+4. Consultar os resultados e analisar os insights gerados  
 
 ---
 
-## 👨‍💻 Autor
+## 🚀 Roadmap de evolução do projeto
 
-Projeto desenvolvido como parte de um portfólio de análise de dados utilizando SQL.
+Este projeto pode ser expandido para um nível mais avançado de análise e engenharia de dados:
+
+### 📊 Expansão do volume e complexidade dos dados
+- Inclusão de novas tabelas (produtos, categorias, pagamentos)
+- Simulação de grandes volumes de dados
+- Cenários mais próximos de ambientes reais
+
+### 📈 Dashboards (Power BI / Tableau)
+- Construção de dashboards com KPIs principais
+- Análise interativa por período, cidade e cliente
+- Visual storytelling para tomada de decisão
+
+### 🐍 Análises em Python (pandas)
+- Reproduzir análises SQL em Python
+- Limpeza e transformação de dados
+- Análise exploratória (EDA)
+- Visualizações
+
+### 🏗️ Modelagem para Data Warehouse
+- Estruturação em modelo dimensional (Star Schema)
+- Separação em camadas (raw, processed, analytics)
+- Preparação para BI escalável
+
+### 🔁 Análise de churn de clientes
+- Definição de churn
+- Cálculo de taxa de abandono
+- Identificação de padrões de perda
+
+### 🔍 Análise de funil de vendas
+- Estruturação do funil (cadastro → compra → recompra)
+- Cálculo de conversões
+- Identificação de gargalos
+
+---
+
+## 📌 Próximo passo
+
+A próxima etapa deste projeto será a implementação das análises em Python e a construção de um dashboard em Power BI, consolidando um fluxo completo de análise de dados.
+
+---
+
+## 👨‍💻 Autora
+
+Larissa Lima  
+Projeto desenvolvido como parte do meu portfólio em Análise de Dados.
