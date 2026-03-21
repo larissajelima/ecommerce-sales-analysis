@@ -1,13 +1,9 @@
-WITH faturamento AS (
-SELECT 
-data_pedido,
-SUM(valor_total) AS faturamento_dia
-FROM pedidos
-GROUP BY data_pedido
-)
+-- Objetivo: analisar o faturamento acumulado ao longo do tempo
 
 SELECT
-data_pedido,
-faturamento_dia,
-SUM(faturamento_dia) OVER (ORDER BY data_pedido) AS faturamento_acumulado
-FROM faturamento;
+    data_pedido,
+    ROUND(SUM(valor_total), 2) AS faturamento_diario,
+    ROUND(SUM(SUM(valor_total)) OVER (ORDER BY data_pedido), 2) AS faturamento_acumulado
+FROM pedidos
+GROUP BY data_pedido
+ORDER BY data_pedido;
