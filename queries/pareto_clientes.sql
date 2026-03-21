@@ -20,9 +20,11 @@ SELECT
     total_gasto,
     faturamento_acumulado,
     ROUND(faturamento_acumulado * 100.0 / faturamento_total, 2) AS percentual_acumulado,
+
     CASE 
         WHEN (faturamento_acumulado * 100.0 / faturamento_total) <= 80 THEN 'top_80_percent'
         ELSE 'restante'
     END AS grupo_pareto
+
 FROM ordenado
 ORDER BY total_gasto DESC;
