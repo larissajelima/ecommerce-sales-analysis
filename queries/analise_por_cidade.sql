@@ -1,5 +1,4 @@
 -- Objetivo: analisar o desempenho de vendas por cidade
--- Métricas: faturamento total, quantidade de pedidos, ticket médio e participação no faturamento geral
 
 WITH faturamento_cidade AS (
     SELECT
@@ -24,7 +23,7 @@ SELECT
     fc.quantidade_pedidos,
     ROUND(fc.faturamento_total, 2) AS faturamento_total,
     fc.ticket_medio,
-    ROUND((fc.faturamento_total * 100.0 / tg.faturamento_geral), 2) AS participacao_percentual
+    ROUND(fc.faturamento_total * 100.0 / tg.faturamento_geral, 2) AS participacao_percentual
 FROM faturamento_cidade fc
 CROSS JOIN total_geral tg
 ORDER BY fc.faturamento_total DESC;
