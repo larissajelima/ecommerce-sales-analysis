@@ -1,7 +1,11 @@
-SELECT 
-cliente_id,
-SUM(valor_total) AS total_gasto
-FROM pedidos
-GROUP BY cliente_id
-ORDER BY total_gasto DESC
-LIMIT 5;
+-- Objetivo: identificar os clientes com maior faturamento
+
+SELECT
+    c.cliente_id,
+    c.nome,
+    SUM(p.valor_total) AS faturamento_total
+FROM clientes c
+JOIN pedidos p
+    ON c.cliente_id = p.cliente_id
+GROUP BY c.cliente_id, c.nome
+ORDER BY faturamento_total DESC;
