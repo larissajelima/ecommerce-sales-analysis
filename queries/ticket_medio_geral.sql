@@ -1,5 +1,4 @@
 -- Objetivo: calcular o ticket médio geral dos pedidos
--- Métricas: quantidade de pedidos, faturamento total e ticket médio
 
 SELECT
     COUNT(*) AS quantidade_pedidos,
