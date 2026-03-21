@@ -1,5 +1,4 @@
--- Objetivo: analisar valor e comportamento dos clientes
--- Métricas: quantidade de pedidos, total gasto, ticket médio, ranking e classificação
+-- Objetivo: analisar o valor gerado por cliente (LTV)
 
 WITH perfil AS (
     SELECT
@@ -15,11 +14,12 @@ SELECT
     quantidade_pedidos,
     total_gasto,
     ticket_medio_cliente,
-    ROW_NUMBER() OVER (ORDER BY total_gasto DESC) AS ranking_cliente,
+
     CASE 
         WHEN total_gasto >= 600 THEN 'alto_valor'
         WHEN total_gasto >= 300 THEN 'medio_valor'
         ELSE 'baixo_valor'
     END AS categoria_cliente
+
 FROM perfil
 ORDER BY total_gasto DESC;
