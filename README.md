@@ -1,60 +1,71 @@
-# Análise de Vendas de E-commerce com SQL
+# 📊 Análise de Vendas de E-commerce com SQL
 
-Projeto de análise de dados de um e-commerce com foco em faturamento, comportamento de clientes e desempenho geográfico.
+Projeto de análise de dados utilizando SQL com foco em métricas essenciais de negócio, como faturamento, comportamento de clientes e desempenho geográfico.
 
-Utilizando SQL, o projeto transforma dados brutos em métricas e insights que apoiam a tomada de decisão em contextos de negócio.
-
----
-
-## 🧠 O que este projeto demonstra
-
-- Capacidade de traduzir perguntas de negócio em consultas SQL
-- Uso de joins, agregações, CTEs e window functions
-- Organização de um projeto analítico completo
-- Análise de métricas de negócio (faturamento, ticket médio, recompra)
-- Estruturação de dados para tomada de decisão
+O objetivo é demonstrar a capacidade de transformar dados brutos em informações úteis para tomada de decisão.
 
 ---
 
-## 🎯 Perguntas de negócio analisadas
+## 🧠 Objetivo do Projeto
 
-- Qual é o faturamento diário da empresa?
-- Como evolui o faturamento acumulado ao longo do tempo?
+Explorar dados de um e-commerce para responder perguntas de negócio e gerar insights iniciais sobre:
+
+- Receita
+- Perfil de clientes
+- Recorrência de compras
+- Distribuição geográfica das vendas
+
+---
+
+## 🛠️ Habilidades Demonstradas
+
+- Escrita de queries SQL para análise de dados  
+- Uso de:
+  - JOINs  
+  - Agregações  
+  - CTEs (Common Table Expressions)  
+  - Window Functions  
+- Tradução de perguntas de negócio em análises práticas  
+- Organização de um projeto analítico estruturado  
+- Identificação de métricas relevantes  
+
+---
+
+## 🎯 Perguntas de Negócio
+
+Este projeto busca responder:
+
+- Qual é o faturamento diário?
+- Como o faturamento evolui ao longo do tempo?
 - Qual é o ticket médio das vendas?
-- Quem são os clientes que mais gastam?
-- Existem clientes que nunca realizaram compras?
-- Qual é a taxa de recompra de clientes?
-- Quais cidades geram maior faturamento?
-- Qual a participação de cada cidade no faturamento total?
+- Quem são os clientes que mais geram receita?
+- Existem clientes cadastrados que nunca compraram?
+- Qual é a taxa de recompra?
+- Quais cidades concentram o faturamento?
+- Qual a participação de cada cidade na receita total?
 
 ---
 
 ## 📂 Dataset
 
-O projeto utiliza dois arquivos:
+O projeto utiliza dois arquivos principais:
 
-- `clientes.csv`: dados cadastrais dos clientes
-- `pedidos.csv`: registros de compras realizadas
+### `clientes.csv`
+- cliente_id  
+- nome  
+- cidade  
+- data_cadastro  
 
-### Principais campos
-
-**clientes.csv**
-- cliente_id
-- nome
-- cidade
-- data_cadastro
-
-**pedidos.csv**
-- pedido_id
-- cliente_id
-- data_pedido
-- valor_total
+### `pedidos.csv`
+- pedido_id  
+- cliente_id  
+- data_pedido  
+- valor_total  
 
 ---
 
-## 📁 Estrutura do projeto
-```
-ecommerce-sales-analysis
+## 📁 Estrutura do Projeto
+```ecommerce-sales-analysis
 │
 ├── README.md
 │
@@ -78,106 +89,66 @@ ecommerce-sales-analysis
 └── conclusions.md
 ```
 
+---
+
+## 📊 Principais Análises
+
+- **Faturamento diário:** total de vendas por dia  
+- **Faturamento acumulado:** evolução da receita ao longo do tempo  
+- **Ticket médio:** valor médio por pedido  
+- **Top clientes:** clientes com maior contribuição para o faturamento  
+- **Clientes sem compra:** identificação de base inativa  
+- **Taxa de recompra:** proporção de clientes recorrentes  
+- **Análise por cidade:** distribuição geográfica da receita  
 
 ---
 
-## 🧰 Tecnologias utilizadas
+## 💡 Insights Iniciais
 
-- SQL
-- Banco de dados relacional
-- CTE (Common Table Expressions)
-- Window Functions
-- Funções de agregação
+- O faturamento apresenta concentração em determinadas cidades  
+- Parte dos clientes cadastrados não realiza compras  
+- Clientes recorrentes contribuem significativamente para a receita  
+- O crescimento do faturamento segue um padrão consistente ao longo do tempo  
 
----
-
-## 📈 Principais análises realizadas
-
-### Faturamento diário
-Calcula o total de vendas realizadas por dia.
-
-### Faturamento acumulado
-Analisa o crescimento do faturamento ao longo do tempo.
-
-### Ticket médio
-Mede o valor médio gasto por pedido.
-
-### Top clientes
-Identifica os clientes que mais contribuíram para o faturamento.
-
-### Clientes sem compra
-Detecta clientes cadastrados que nunca realizaram pedidos.
-
-### Taxa de recompra
-Mede a proporção de clientes que realizaram mais de uma compra.
-
-### Desempenho por cidade
-Avalia quais cidades geram mais faturamento e sua participação no total.
+> ⚠️ Observação: devido ao tamanho reduzido do dataset, os insights têm caráter exploratório.
 
 ---
 
-## 💡 Principais insights
+## ⚙️ Como Reproduzir
 
-- O faturamento está concentrado em determinadas cidades, indicando dependência geográfica
-- Uma parcela relevante dos clientes cadastrados não realizou compras
-- Clientes recorrentes possuem impacto significativo na receita total
-- A evolução do faturamento apresenta padrão consistente ao longo do tempo
-
----
-
-## ⚙️ Como reproduzir o projeto
-
-1. Executar o script `schema/create_tables.sql` para criação das tabelas  
-2. Importar os arquivos CSV da pasta `dataset`  
-3. Executar as consultas SQL disponíveis na pasta `queries`  
-4. Consultar os resultados e analisar os insights gerados  
+1. Executar `schema/create_tables.sql`  
+2. Importar os arquivos da pasta `dataset`  
+3. Executar as queries da pasta `queries`  
+4. Analisar os resultados  
 
 ---
 
-## 🚀 Roadmap de evolução do projeto
+## 🚀 Possíveis Evoluções
 
-Este projeto pode ser expandido para um nível mais avançado de análise e engenharia de dados:
+Este projeto pode ser expandido com:
 
-### 📊 Expansão do volume e complexidade dos dados
-- Inclusão de novas tabelas (produtos, categorias, pagamentos)
-- Simulação de grandes volumes de dados
-- Cenários mais próximos de ambientes reais
-
-### 📈 Dashboards (Power BI / Tableau)
-- Construção de dashboards com KPIs principais
-- Análise interativa por período, cidade e cliente
-- Visual storytelling para tomada de decisão
-
-### 🐍 Análises em Python (pandas)
-- Reproduzir análises SQL em Python
-- Limpeza e transformação de dados
-- Análise exploratória (EDA)
-- Visualizações
-
-### 🏗️ Modelagem para Data Warehouse
-- Estruturação em modelo dimensional (Star Schema)
-- Separação em camadas (raw, processed, analytics)
-- Preparação para BI escalável
-
-### 🔁 Análise de churn de clientes
-- Definição de churn
-- Cálculo de taxa de abandono
-- Identificação de padrões de perda
-
-### 🔍 Análise de funil de vendas
-- Estruturação do funil (cadastro → compra → recompra)
-- Cálculo de conversões
-- Identificação de gargalos
+- Inclusão de novas tabelas (produtos, categorias, pagamentos)  
+- Aumento do volume de dados  
+- Modelagem dimensional (Star Schema)  
+- Criação de dashboards (Power BI / Tableau)  
+- Análise em Python (pandas)  
+- Estudo de churn de clientes  
+- Análise de funil de vendas  
 
 ---
 
-## 📌 Próximo passo
+## 📌 Próximos Passos
 
-A próxima etapa deste projeto será a implementação das análises em Python e a construção de um dashboard em Power BI, consolidando um fluxo completo de análise de dados.
+Evoluir este projeto para análises mais avançadas, incluindo:
+
+- Modelagem de dados  
+- Métricas de retenção  
+- Visualização em dashboards  
+- Pipeline analítico completo  
 
 ---
 
-## 👨‍💻 Autora
+## 👩‍💻 Autora
 
-Larissa Lima  
+**Larissa Lima**  
 Projeto desenvolvido como parte do meu portfólio em Análise de Dados.
